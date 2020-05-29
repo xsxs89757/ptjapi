@@ -13,4 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', 'IndexController@show')->name('show');
+//Route::get('/logins', 'IndexController@shows')->name('show');
+Route::post('/login', 'AuthController@login')->name('login');

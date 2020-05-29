@@ -56,10 +56,10 @@ return [
 		],
 
 		'admin' => [
-			'auth.guard' => [
+			'auth.guards' => [
 				 'admin' => [
 					 'driver' => 'jwt',
-					 'provider' => 'adminUsers'
+					 'provider' => 'admin'
 				 ]
 			],
 			'auth.defaults.guard' => 'admin',

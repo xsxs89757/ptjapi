@@ -7,7 +7,7 @@ use Closure;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Http\Middleware\BaseMiddleware;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException; //变成自定义的异常返回
 use Illuminate\Support\Facades\Log;
 
 // 注意，我们要继承的是 jwt 的 BaseMiddleware
@@ -30,10 +30,6 @@ class RefreshAdminToken extends BaseMiddleware
        // 使用 try 包裹，以捕捉 token 过期所抛出的 TokenExpiredException  异常
         try {
             //检测是否是后台token
-            /*
-            if($this->auth->parseToken()->getClaim('role') ！== 'admin'){
-                throw new UnauthorizedHttpException('jwt-auth', trans('auth.exceptionLogin'));
-            }*/
             
             // 检测用户的登录状态，如果正常则通过
             if ($this->auth->parseToken()->authenticate()) {
