@@ -64,7 +64,7 @@ return [
 			],
 			'auth.defaults.guard' => 'admin',
 			'filesystems.default' => 'public',
-			'filesystems.disks.public.url' => env('APP_URL_ASSETS', env('APP_URL')).'/storage',
+			'filesystems.disks.public.url' => env('APP_URL_ASSETS', env('APP_URL').'/storage'),
 			'session.domain' => env('SESSION_DOMAIN_ADMIN', null),
 			'auth.providers' => [
 				'admin' => [

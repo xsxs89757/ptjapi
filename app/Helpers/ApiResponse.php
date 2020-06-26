@@ -47,7 +47,7 @@
 		 * @param null $code
 		 * @return mixed
 		 */
-		public function status(array $data, $code = null)
+		public function status($data, $code = null)
 		{
 
 			if ($code){
@@ -58,7 +58,7 @@
 			$status = [];
 			if($statusCode < 200 || $statusCode >299){
 				$status = [
-					'error_code' => $code
+					'error_code' => intval($code)
 				];
 			}
 			$this->setStatusCode($statusCode);

@@ -7,7 +7,7 @@ use Closure;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Http\Middleware\BaseMiddleware;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException; //变成自定义的异常返回
+//use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException; //变成自定义的异常返回
 use Illuminate\Support\Facades\Log;
 
 // 注意，我们要继承的是 jwt 的 BaseMiddleware
@@ -35,7 +35,8 @@ class RefreshAdminToken extends BaseMiddleware
             if ($this->auth->parseToken()->authenticate()) {
                 return $next($request);
             }
-            throw new UnauthorizedHttpException('jwt-auth', trans('auth.noLogin'));
+            throw new \App\Exceptions\ApiException(40001);
+            //throw new UnauthorizedHttpException('jwt-auth', trans('auth.noLogin'));
         } catch (TokenExpiredException $exception) {
           // 此处捕获到了 token 过期所抛出的 TokenExpiredException 异常，我们在这里需要做的是刷新该用户的 token 并将它添加到响应头中
             try {
@@ -44,8 +45,10 @@ class RefreshAdminToken extends BaseMiddleware
                // 使用一次性登录以保证此次请求的成功
                 Auth::guard('admin')->onceUsingId($this->auth->manager()->getPayloadFactory()->buildClaimsCollection()->toPlainArray()['sub']);
             } catch (JWTException $exception) {
-               // 如果捕获到此异常，即代表 refresh 也过期了，用户无法刷新令牌，需要重新登录。
-                throw new UnauthorizedHttpException('jwt-auth', $exception->getMessage());
+                // 如果捕获到此异常，即代表 refresh 也过期了，用户无法刷新令牌，需要重新登录。
+                throw new \App\Exceptions\ApiException(40000);
+                
+                //throw new UnauthorizedHttpException('jwt-auth', $exception->getMessage());
             }
         }
         // 在响应头中返回新的 token

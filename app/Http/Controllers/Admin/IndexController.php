@@ -10,6 +10,6 @@ class IndexController extends AdminApiController
     
     public function show(Request $request)
     {
-    	return $this->deleteOrPutPatch();
+    	return $this->success(['test']);
     }
 }
