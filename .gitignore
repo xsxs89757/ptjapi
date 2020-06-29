@@ -12,3 +12,5 @@ npm-debug.log
 yarn-error.log
 .DS_Store
 */.DS_Store
+.tags
+.tags_sorted_by_file

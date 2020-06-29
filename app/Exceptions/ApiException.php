@@ -16,11 +16,6 @@ class ApiException extends Exception
 	 */
 	public function render($request)
 	{
-		$error = static::setError();
-		if(isset($error[$this->getMessage()])){
-			return $this->failed($this->getMessage());
-		}else{
-			return $this->failed($this->getMessage(),59999);
-		}
+		return $this->failed($this->getMessage());
 	}
 }

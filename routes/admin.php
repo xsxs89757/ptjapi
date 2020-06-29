@@ -24,14 +24,14 @@ Route::middleware(['refresh.admin.token','admin.action.log'])->group(function($r
     $router->get('/admin-user/info','AdminUserController@info')->name('userInfo');
     $router->get('/routers','RouterController@list')->name('routeList');
     $router->get('/menu/channel','MenuController@getChannel')->name('menu.channel');
-    $router->post('/admin-user/resetPassword','UserController@resetPassword')->name('resetPassword');
+    $router->put('/admin-user/reset-password','AdminUserController@resetPassword')->name('resetPassword');
     /*公共上传部分*/
 
     $router->post('/upload/signle-image','UploadController@signleImage')->name('upload.signleImage');
     $router->post('/upload/up-config','UploadController@upConfig')->name('upload.upConfig');
 
 
-    $router->get('/user/dev','UserController@dev')->name('dev');
+    $router->get('/admin-user/dev','AdminUserController@dev')->name('dev');
 
     //筛选
     $router->get('/roles-list','RolesController@rolesList')->name('adminUsers.role');
