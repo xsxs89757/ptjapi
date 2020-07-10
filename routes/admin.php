@@ -19,6 +19,7 @@ Route::get('/', 'IndexController@show')->name('show'); //test
 Route::middleware('admin.action.log')->post('/login', 'AuthController@login')->name('login');
 Route::post('/admin-user/logout', 'AuthController@logout')->name('logout');
 
+
 Route::middleware(['refresh.admin.token','admin.action.log'])->group(function($router) {
 	/*登录后公共拥有权限部分*/
     $router->get('/admin-user/info','AdminUserController@info')->name('userInfo');
