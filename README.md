@@ -5,7 +5,8 @@
 > `composer install` 安装轮子  
   `php artisan key:generate` 生成项目令牌  
   `php artisan jwt:secret ` 生成项目jwt通信密钥  
-  `php artisan migrate --seed` 安装基础表  
+  `php artisan migrate --seed` 安装基础表 
+  `php artisan storage:link` 创建文件磁力链接   
 #### 2.laravel-echo-server  
 >`npm install -g laravel-echo-server` 安装laravel-echo-server  
   修改laravel-echo-server.json  相关配置  
