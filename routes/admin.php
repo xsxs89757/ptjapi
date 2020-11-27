@@ -83,6 +83,7 @@ Route::middleware(['refresh.admin.token','admin.action.log'])->group(function($r
         $router->put('/dictionary','DictionaryController@edit')->name('system.dictionary.edit');
         $router->put('/dictionary/save','DictionaryController@save')->name('system.dictionary.save');
 
+
 	});
 
 });
